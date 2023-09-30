@@ -1,1 +1,4 @@
-include!(concat!(env!("OUT_DIR"), "/protos/mod.rs"));
+// @generated
+
+pub mod message;
+pub mod rendezvous;

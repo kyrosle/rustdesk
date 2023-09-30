@@ -32,7 +32,7 @@ fn setup(reader: BinaryReader, dir: Option<PathBuf>, clear: bool) -> Option<Path
     }
     #[cfg(windows)]
     windows::copy_runtime_broker(&dir);
-    #[cfg(linux)]
+    #[cfg(unix)]
     reader.configure_permission(&dir);
     Some(dir.join(&reader.exe))
 }
