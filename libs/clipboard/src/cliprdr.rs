@@ -175,399 +175,406 @@ pub const FALSE: ::std::os::raw::c_int = 0;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_HEADER {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
 }
 pub type CLIPRDR_HEADER = _CLIPRDR_HEADER;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_CAPABILITY_SET {
-    pub capabilitySetType: UINT16,
-    pub capabilitySetLength: UINT16,
+  pub capabilitySetType: UINT16,
+  pub capabilitySetLength: UINT16,
 }
 pub type CLIPRDR_CAPABILITY_SET = _CLIPRDR_CAPABILITY_SET;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_GENERAL_CAPABILITY_SET {
-    pub capabilitySetType: UINT16,
-    pub capabilitySetLength: UINT16,
-    pub version: UINT32,
-    pub generalFlags: UINT32,
+  pub capabilitySetType: UINT16,
+  pub capabilitySetLength: UINT16,
+  pub version: UINT32,
+  pub generalFlags: UINT32,
 }
 pub type CLIPRDR_GENERAL_CAPABILITY_SET = _CLIPRDR_GENERAL_CAPABILITY_SET;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_CAPABILITIES {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub cCapabilitiesSets: UINT32,
-    pub capabilitySets: *mut CLIPRDR_CAPABILITY_SET,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub cCapabilitiesSets: UINT32,
+  pub capabilitySets: *mut CLIPRDR_CAPABILITY_SET,
 }
 pub type CLIPRDR_CAPABILITIES = _CLIPRDR_CAPABILITIES;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_MONITOR_READY {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
 }
 pub type CLIPRDR_MONITOR_READY = _CLIPRDR_MONITOR_READY;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_TEMP_DIRECTORY {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub szTempDir: [::std::os::raw::c_char; 520usize],
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub szTempDir: [::std::os::raw::c_char; 520usize],
 }
 pub type CLIPRDR_TEMP_DIRECTORY = _CLIPRDR_TEMP_DIRECTORY;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_FORMAT {
-    pub formatId: UINT32,
-    pub formatName: *mut ::std::os::raw::c_char,
+  pub formatId: UINT32,
+  pub formatName: *mut ::std::os::raw::c_char,
 }
 pub type CLIPRDR_FORMAT = _CLIPRDR_FORMAT;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_FORMAT_LIST {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub numFormats: UINT32,
-    pub formats: *mut CLIPRDR_FORMAT,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub numFormats: UINT32,
+  pub formats: *mut CLIPRDR_FORMAT,
 }
 pub type CLIPRDR_FORMAT_LIST = _CLIPRDR_FORMAT_LIST;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_FORMAT_LIST_RESPONSE {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
 }
 pub type CLIPRDR_FORMAT_LIST_RESPONSE = _CLIPRDR_FORMAT_LIST_RESPONSE;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_LOCK_CLIPBOARD_DATA {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub clipDataId: UINT32,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub clipDataId: UINT32,
 }
 pub type CLIPRDR_LOCK_CLIPBOARD_DATA = _CLIPRDR_LOCK_CLIPBOARD_DATA;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_UNLOCK_CLIPBOARD_DATA {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub clipDataId: UINT32,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub clipDataId: UINT32,
 }
 pub type CLIPRDR_UNLOCK_CLIPBOARD_DATA = _CLIPRDR_UNLOCK_CLIPBOARD_DATA;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_FORMAT_DATA_REQUEST {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub requestedFormatId: UINT32,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub requestedFormatId: UINT32,
 }
 pub type CLIPRDR_FORMAT_DATA_REQUEST = _CLIPRDR_FORMAT_DATA_REQUEST;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_FORMAT_DATA_RESPONSE {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub requestedFormatData: *const BYTE,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub requestedFormatData: *const BYTE,
 }
 pub type CLIPRDR_FORMAT_DATA_RESPONSE = _CLIPRDR_FORMAT_DATA_RESPONSE;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_FILE_CONTENTS_REQUEST {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub streamId: UINT32,
-    pub listIndex: UINT32,
-    pub dwFlags: UINT32,
-    pub nPositionLow: UINT32,
-    pub nPositionHigh: UINT32,
-    pub cbRequested: UINT32,
-    pub haveClipDataId: BOOL,
-    pub clipDataId: UINT32,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub streamId: UINT32,
+  pub listIndex: UINT32,
+  pub dwFlags: UINT32,
+  pub nPositionLow: UINT32,
+  pub nPositionHigh: UINT32,
+  pub cbRequested: UINT32,
+  pub haveClipDataId: BOOL,
+  pub clipDataId: UINT32,
 }
 pub type CLIPRDR_FILE_CONTENTS_REQUEST = _CLIPRDR_FILE_CONTENTS_REQUEST;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _CLIPRDR_FILE_CONTENTS_RESPONSE {
-    pub connID: UINT32,
-    pub msgType: UINT16,
-    pub msgFlags: UINT16,
-    pub dataLen: UINT32,
-    pub streamId: UINT32,
-    pub cbRequested: UINT32,
-    pub requestedData: *const BYTE,
+  pub connID: UINT32,
+  pub msgType: UINT16,
+  pub msgFlags: UINT16,
+  pub dataLen: UINT32,
+  pub streamId: UINT32,
+  pub cbRequested: UINT32,
+  pub requestedData: *const BYTE,
 }
 pub type CLIPRDR_FILE_CONTENTS_RESPONSE = _CLIPRDR_FILE_CONTENTS_RESPONSE;
 pub type CliprdrClientContext = _cliprdr_client_context;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _NOTIFICATION_MESSAGE {
-    pub r#type: UINT32, // 0 - info, 1 - warning, 2 - error
-    pub msg: *const BYTE,
-    pub details: *const BYTE,
+  pub r#type: UINT32, // 0 - info, 1 - warning, 2 - error
+  pub msg: *const BYTE,
+  pub details: *const BYTE,
 }
 pub type NOTIFICATION_MESSAGE = _NOTIFICATION_MESSAGE;
 pub type pcCliprdrServerCapabilities = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        capabilities: *const CLIPRDR_CAPABILITIES,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    capabilities: *const CLIPRDR_CAPABILITIES,
+  ) -> UINT,
 >;
 pub type pcCliprdrClientCapabilities = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        capabilities: *const CLIPRDR_CAPABILITIES,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    capabilities: *const CLIPRDR_CAPABILITIES,
+  ) -> UINT,
 >;
 pub type pcCliprdrMonitorReady = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        monitorReady: *const CLIPRDR_MONITOR_READY,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    monitorReady: *const CLIPRDR_MONITOR_READY,
+  ) -> UINT,
 >;
 pub type pcCliprdrTempDirectory = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        tempDirectory: *const CLIPRDR_TEMP_DIRECTORY,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    tempDirectory: *const CLIPRDR_TEMP_DIRECTORY,
+  ) -> UINT,
 >;
-pub type pcNotifyClipboardMsg =
-    ::std::option::Option<unsafe extern "C" fn(connID: UINT32, msg: *const NOTIFICATION_MESSAGE) -> UINT>;
+pub type pcNotifyClipboardMsg = ::std::option::Option<
+  unsafe extern "C" fn(
+    connID: UINT32,
+    msg: *const NOTIFICATION_MESSAGE,
+  ) -> UINT,
+>;
 pub type pcCliprdrClientFormatList = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        formatList: *const CLIPRDR_FORMAT_LIST,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    formatList: *const CLIPRDR_FORMAT_LIST,
+  ) -> UINT,
 >;
 pub type pcCliprdrServerFormatList = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        formatList: *const CLIPRDR_FORMAT_LIST,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    formatList: *const CLIPRDR_FORMAT_LIST,
+  ) -> UINT,
 >;
 pub type pcCliprdrClientFormatListResponse = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        formatListResponse: *const CLIPRDR_FORMAT_LIST_RESPONSE,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    formatListResponse: *const CLIPRDR_FORMAT_LIST_RESPONSE,
+  ) -> UINT,
 >;
 pub type pcCliprdrServerFormatListResponse = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        formatListResponse: *const CLIPRDR_FORMAT_LIST_RESPONSE,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    formatListResponse: *const CLIPRDR_FORMAT_LIST_RESPONSE,
+  ) -> UINT,
 >;
 pub type pcCliprdrClientLockClipboardData = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        lockClipboardData: *const CLIPRDR_LOCK_CLIPBOARD_DATA,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    lockClipboardData: *const CLIPRDR_LOCK_CLIPBOARD_DATA,
+  ) -> UINT,
 >;
 pub type pcCliprdrServerLockClipboardData = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        lockClipboardData: *const CLIPRDR_LOCK_CLIPBOARD_DATA,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    lockClipboardData: *const CLIPRDR_LOCK_CLIPBOARD_DATA,
+  ) -> UINT,
 >;
 pub type pcCliprdrClientUnlockClipboardData = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        unlockClipboardData: *const CLIPRDR_UNLOCK_CLIPBOARD_DATA,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    unlockClipboardData: *const CLIPRDR_UNLOCK_CLIPBOARD_DATA,
+  ) -> UINT,
 >;
 pub type pcCliprdrServerUnlockClipboardData = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        unlockClipboardData: *const CLIPRDR_UNLOCK_CLIPBOARD_DATA,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    unlockClipboardData: *const CLIPRDR_UNLOCK_CLIPBOARD_DATA,
+  ) -> UINT,
 >;
 pub type pcCliprdrClientFormatDataRequest = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        formatDataRequest: *const CLIPRDR_FORMAT_DATA_REQUEST,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    formatDataRequest: *const CLIPRDR_FORMAT_DATA_REQUEST,
+  ) -> UINT,
 >;
 pub type pcCliprdrServerFormatDataRequest = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        formatDataRequest: *const CLIPRDR_FORMAT_DATA_REQUEST,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    formatDataRequest: *const CLIPRDR_FORMAT_DATA_REQUEST,
+  ) -> UINT,
 >;
 pub type pcCliprdrClientFormatDataResponse = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        formatDataResponse: *const CLIPRDR_FORMAT_DATA_RESPONSE,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    formatDataResponse: *const CLIPRDR_FORMAT_DATA_RESPONSE,
+  ) -> UINT,
 >;
 pub type pcCliprdrServerFormatDataResponse = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        formatDataResponse: *const CLIPRDR_FORMAT_DATA_RESPONSE,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    formatDataResponse: *const CLIPRDR_FORMAT_DATA_RESPONSE,
+  ) -> UINT,
 >;
 pub type pcCliprdrClientFileContentsRequest = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        fileContentsRequest: *const CLIPRDR_FILE_CONTENTS_REQUEST,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    fileContentsRequest: *const CLIPRDR_FILE_CONTENTS_REQUEST,
+  ) -> UINT,
 >;
 pub type pcCliprdrServerFileContentsRequest = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        fileContentsRequest: *const CLIPRDR_FILE_CONTENTS_REQUEST,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    fileContentsRequest: *const CLIPRDR_FILE_CONTENTS_REQUEST,
+  ) -> UINT,
 >;
 pub type pcCliprdrClientFileContentsResponse = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        fileContentsResponse: *const CLIPRDR_FILE_CONTENTS_RESPONSE,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    fileContentsResponse: *const CLIPRDR_FILE_CONTENTS_RESPONSE,
+  ) -> UINT,
 >;
 pub type pcCliprdrServerFileContentsResponse = ::std::option::Option<
-    unsafe extern "C" fn(
-        context: *mut CliprdrClientContext,
-        fileContentsResponse: *const CLIPRDR_FILE_CONTENTS_RESPONSE,
-    ) -> UINT,
+  unsafe extern "C" fn(
+    context: *mut CliprdrClientContext,
+    fileContentsResponse: *const CLIPRDR_FILE_CONTENTS_RESPONSE,
+  ) -> UINT,
 >;
 
 // TODO: hide more members of clipboard context
 #[repr(C)]
 #[derive(Debug, Clone)]
 pub struct _cliprdr_client_context {
-    pub Custom: *mut ::std::os::raw::c_void,
-    pub EnableFiles: BOOL,
-    pub EnableOthers: BOOL,
-    pub IsStopped: BOOL,
-    pub ResponseWaitTimeoutSecs: UINT32,
-    pub ServerCapabilities: pcCliprdrServerCapabilities,
-    pub ClientCapabilities: pcCliprdrClientCapabilities,
-    pub MonitorReady: pcCliprdrMonitorReady,
-    pub TempDirectory: pcCliprdrTempDirectory,
-    pub NotifyClipboardMsg: pcNotifyClipboardMsg,
-    pub ClientFormatList: pcCliprdrClientFormatList,
-    pub ServerFormatList: pcCliprdrServerFormatList,
-    pub ClientFormatListResponse: pcCliprdrClientFormatListResponse,
-    pub ServerFormatListResponse: pcCliprdrServerFormatListResponse,
-    pub ClientLockClipboardData: pcCliprdrClientLockClipboardData,
-    pub ServerLockClipboardData: pcCliprdrServerLockClipboardData,
-    pub ClientUnlockClipboardData: pcCliprdrClientUnlockClipboardData,
-    pub ServerUnlockClipboardData: pcCliprdrServerUnlockClipboardData,
-    pub ClientFormatDataRequest: pcCliprdrClientFormatDataRequest,
-    pub ServerFormatDataRequest: pcCliprdrServerFormatDataRequest,
-    pub ClientFormatDataResponse: pcCliprdrClientFormatDataResponse,
-    pub ServerFormatDataResponse: pcCliprdrServerFormatDataResponse,
-    pub ClientFileContentsRequest: pcCliprdrClientFileContentsRequest,
-    pub ServerFileContentsRequest: pcCliprdrServerFileContentsRequest,
-    pub ClientFileContentsResponse: pcCliprdrClientFileContentsResponse,
-    pub ServerFileContentsResponse: pcCliprdrServerFileContentsResponse,
-    pub LastRequestedFormatId: UINT32,
+  pub Custom: *mut ::std::os::raw::c_void,
+  pub EnableFiles: BOOL,
+  pub EnableOthers: BOOL,
+  pub IsStopped: BOOL,
+  pub ResponseWaitTimeoutSecs: UINT32,
+  pub ServerCapabilities: pcCliprdrServerCapabilities,
+  pub ClientCapabilities: pcCliprdrClientCapabilities,
+  pub MonitorReady: pcCliprdrMonitorReady,
+  pub TempDirectory: pcCliprdrTempDirectory,
+  pub NotifyClipboardMsg: pcNotifyClipboardMsg,
+  pub ClientFormatList: pcCliprdrClientFormatList,
+  pub ServerFormatList: pcCliprdrServerFormatList,
+  pub ClientFormatListResponse: pcCliprdrClientFormatListResponse,
+  pub ServerFormatListResponse: pcCliprdrServerFormatListResponse,
+  pub ClientLockClipboardData: pcCliprdrClientLockClipboardData,
+  pub ServerLockClipboardData: pcCliprdrServerLockClipboardData,
+  pub ClientUnlockClipboardData: pcCliprdrClientUnlockClipboardData,
+  pub ServerUnlockClipboardData: pcCliprdrServerUnlockClipboardData,
+  pub ClientFormatDataRequest: pcCliprdrClientFormatDataRequest,
+  pub ServerFormatDataRequest: pcCliprdrServerFormatDataRequest,
+  pub ClientFormatDataResponse: pcCliprdrClientFormatDataResponse,
+  pub ServerFormatDataResponse: pcCliprdrServerFormatDataResponse,
+  pub ClientFileContentsRequest: pcCliprdrClientFileContentsRequest,
+  pub ServerFileContentsRequest: pcCliprdrServerFileContentsRequest,
+  pub ClientFileContentsResponse: pcCliprdrClientFileContentsResponse,
+  pub ServerFileContentsResponse: pcCliprdrServerFileContentsResponse,
+  pub LastRequestedFormatId: UINT32,
 }
 
 // #[link(name = "user32")]
 // #[link(name = "ole32")]
 extern "C" {
-    pub(crate) fn init_cliprdr(context: *mut CliprdrClientContext) -> BOOL;
-    pub(crate) fn uninit_cliprdr(context: *mut CliprdrClientContext) -> BOOL;
-    pub(crate) fn empty_cliprdr(context: *mut CliprdrClientContext, connID: UINT32) -> BOOL;
+  pub(crate) fn init_cliprdr(context: *mut CliprdrClientContext) -> BOOL;
+  pub(crate) fn uninit_cliprdr(context: *mut CliprdrClientContext) -> BOOL;
+  pub(crate) fn empty_cliprdr(
+    context: *mut CliprdrClientContext,
+    connID: UINT32,
+  ) -> BOOL;
 }
 
 #[derive(Error, Debug)]
 pub enum CliprdrError {
-    #[error("invalid cliprdr name")]
-    CliprdrName,
-    #[error("failed to init cliprdr")]
-    CliprdrInit,
-    #[error("unknown cliprdr error")]
-    Unknown,
+  #[error("invalid cliprdr name")]
+  CliprdrName,
+  #[error("failed to init cliprdr")]
+  CliprdrInit,
+  #[error("unknown cliprdr error")]
+  Unknown,
 }
 
 impl CliprdrClientContext {
-    pub fn create(
-        enable_files: bool,
-        enable_others: bool,
-        response_wait_timeout_secs: u32,
-        notify_callback: pcNotifyClipboardMsg,
-        client_format_list: pcCliprdrClientFormatList,
-        client_format_list_response: pcCliprdrClientFormatListResponse,
-        client_format_data_request: pcCliprdrClientFormatDataRequest,
-        client_format_data_response: pcCliprdrClientFormatDataResponse,
-        client_file_contents_request: pcCliprdrClientFileContentsRequest,
-        client_file_contents_response: pcCliprdrClientFileContentsResponse,
-    ) -> Result<Box<Self>, CliprdrError> {
-        let context = CliprdrClientContext {
-            Custom: 0 as *mut _,
-            EnableFiles: if enable_files { TRUE } else { FALSE },
-            EnableOthers: if enable_others { TRUE } else { FALSE },
-            IsStopped: FALSE,
-            ResponseWaitTimeoutSecs: response_wait_timeout_secs,
-            ServerCapabilities: None,
-            ClientCapabilities: None,
-            MonitorReady: None,
-            TempDirectory: None,
-            NotifyClipboardMsg: notify_callback,
-            ClientFormatList: client_format_list,
-            ServerFormatList: None,
-            ClientFormatListResponse: client_format_list_response,
-            ServerFormatListResponse: None,
-            ClientLockClipboardData: None,
-            ServerLockClipboardData: None,
-            ClientUnlockClipboardData: None,
-            ServerUnlockClipboardData: None,
-            ClientFormatDataRequest: client_format_data_request,
-            ServerFormatDataRequest: None,
-            ClientFormatDataResponse: client_format_data_response,
-            ServerFormatDataResponse: None,
-            ClientFileContentsRequest: client_file_contents_request,
-            ServerFileContentsRequest: None,
-            ClientFileContentsResponse: client_file_contents_response,
-            ServerFileContentsResponse: None,
-            LastRequestedFormatId: 0,
-        };
-        let mut context = Box::new(context);
-        unsafe {
-            if FALSE == init_cliprdr(&mut (*context)) {
-                println!("Failed to init cliprdr");
-                Err(CliprdrError::CliprdrInit)
-            } else {
-                Ok(context)
-            }
-        }
+  pub fn create(
+    enable_files: bool,
+    enable_others: bool,
+    response_wait_timeout_secs: u32,
+    notify_callback: pcNotifyClipboardMsg,
+    client_format_list: pcCliprdrClientFormatList,
+    client_format_list_response: pcCliprdrClientFormatListResponse,
+    client_format_data_request: pcCliprdrClientFormatDataRequest,
+    client_format_data_response: pcCliprdrClientFormatDataResponse,
+    client_file_contents_request: pcCliprdrClientFileContentsRequest,
+    client_file_contents_response: pcCliprdrClientFileContentsResponse,
+  ) -> Result<Box<Self>, CliprdrError> {
+    let context = CliprdrClientContext {
+      Custom: 0 as *mut _,
+      EnableFiles: if enable_files { TRUE } else { FALSE },
+      EnableOthers: if enable_others { TRUE } else { FALSE },
+      IsStopped: FALSE,
+      ResponseWaitTimeoutSecs: response_wait_timeout_secs,
+      ServerCapabilities: None,
+      ClientCapabilities: None,
+      MonitorReady: None,
+      TempDirectory: None,
+      NotifyClipboardMsg: notify_callback,
+      ClientFormatList: client_format_list,
+      ServerFormatList: None,
+      ClientFormatListResponse: client_format_list_response,
+      ServerFormatListResponse: None,
+      ClientLockClipboardData: None,
+      ServerLockClipboardData: None,
+      ClientUnlockClipboardData: None,
+      ServerUnlockClipboardData: None,
+      ClientFormatDataRequest: client_format_data_request,
+      ServerFormatDataRequest: None,
+      ClientFormatDataResponse: client_format_data_response,
+      ServerFormatDataResponse: None,
+      ClientFileContentsRequest: client_file_contents_request,
+      ServerFileContentsRequest: None,
+      ClientFileContentsResponse: client_file_contents_response,
+      ServerFileContentsResponse: None,
+      LastRequestedFormatId: 0,
+    };
+    let mut context = Box::new(context);
+    unsafe {
+      if FALSE == init_cliprdr(&mut (*context)) {
+        println!("Failed to init cliprdr");
+        Err(CliprdrError::CliprdrInit)
+      } else {
+        Ok(context)
+      }
     }
+  }
 }
 
 impl Drop for CliprdrClientContext {
-    fn drop(&mut self) {
-        unsafe {
-            if FALSE == uninit_cliprdr(&mut *self) {
-                println!("Failed to uninit cliprdr");
-            } else {
-                println!("Succeeded to uninit cliprdr");
-            }
-        }
+  fn drop(&mut self) {
+    unsafe {
+      if FALSE == uninit_cliprdr(&mut *self) {
+        println!("Failed to uninit cliprdr");
+      } else {
+        println!("Succeeded to uninit cliprdr");
+      }
     }
+  }
 }

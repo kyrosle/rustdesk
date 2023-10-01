@@ -5,21 +5,21 @@
 #![allow(dead_code)]
 
 impl Default for vpx_codec_enc_cfg {
-    fn default() -> Self {
-        unsafe { std::mem::zeroed() }
-    }
+  fn default() -> Self {
+    unsafe { std::mem::zeroed() }
+  }
 }
 
 impl Default for vpx_codec_ctx {
-    fn default() -> Self {
-        unsafe { std::mem::zeroed() }
-    }
+  fn default() -> Self {
+    unsafe { std::mem::zeroed() }
+  }
 }
 
 impl Default for vpx_image_t {
-    fn default() -> Self {
-        unsafe { std::mem::zeroed() }
-    }
+  fn default() -> Self {
+    unsafe { std::mem::zeroed() }
+  }
 }
 
 include!(concat!(env!("OUT_DIR"), "/vpx_ffi.rs"));

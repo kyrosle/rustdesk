@@ -1,7 +1,7 @@
 use hbb_common::{anyhow, dlopen::symbor::Library, log, ResultType};
 use std::{
-    collections::HashSet,
-    sync::{Arc, Mutex},
+  collections::HashSet,
+  sync::{Arc, Mutex},
 };
 
 const LIB_NAME_VIRTUAL_DISPLAY: &str = "dylib_virtual_display";
@@ -10,9 +10,9 @@ pub type DWORD = ::std::os::raw::c_ulong;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _MonitorMode {
-    pub width: DWORD,
-    pub height: DWORD,
-    pub sync: DWORD,
+  pub width: DWORD,
+  pub height: DWORD,
+  pub sync: DWORD,
 }
 pub type MonitorMode = _MonitorMode;
 pub type PMonitorMode = *mut MonitorMode;
@@ -95,103 +95,110 @@ lazy_static::lazy_static! {
 
 #[cfg(target_os = "windows")]
 fn get_lib_name() -> String {
-    format!("{}.dll", LIB_NAME_VIRTUAL_DISPLAY)
+  format!("{}.dll", LIB_NAME_VIRTUAL_DISPLAY)
 }
 
 #[cfg(target_os = "linux")]
 fn get_lib_name() -> String {
-    format!("lib{}.so", LIB_NAME_VIRTUAL_DISPLAY)
+  format!("lib{}.so", LIB_NAME_VIRTUAL_DISPLAY)
 }
 
 #[cfg(target_os = "macos")]
 fn get_lib_name() -> String {
-    format!("lib{}.dylib", LIB_NAME_VIRTUAL_DISPLAY)
+  format!("lib{}.dylib", LIB_NAME_VIRTUAL_DISPLAY)
 }
 
 #[cfg(windows)]
 pub fn get_driver_install_path() -> Option<&'static str> {
-    Some(LIB_WRAPPER.lock().unwrap().get_driver_install_path?())
+  Some(LIB_WRAPPER.lock().unwrap().get_driver_install_path?())
 }
 
 pub fn is_device_created() -> bool {
-    LIB_WRAPPER
-        .lock()
-        .unwrap()
-        .is_device_created
-        .map(|f| f())
-        .unwrap_or(false)
+  LIB_WRAPPER
+    .lock()
+    .unwrap()
+    .is_device_created
+    .map(|f| f())
+    .unwrap_or(false)
 }
 
 pub fn close_device() {
-    let _r = LIB_WRAPPER.lock().unwrap().close_device.map(|f| f());
+  let _r = LIB_WRAPPER.lock().unwrap().close_device.map(|f| f());
 }
 
 pub fn download_driver() -> ResultType<()> {
-    LIB_WRAPPER
-        .lock()
-        .unwrap()
-        .download_driver
-        .ok_or(anyhow::Error::msg("download_driver method not found"))?()
+  LIB_WRAPPER
+    .lock()
+    .unwrap()
+    .download_driver
+    .ok_or(anyhow::Error::msg("download_driver method not found"))?()
 }
 
 pub fn create_device() -> ResultType<()> {
-    LIB_WRAPPER
-        .lock()
-        .unwrap()
-        .create_device
-        .ok_or(anyhow::Error::msg("create_device method not found"))?()
+  LIB_WRAPPER
+    .lock()
+    .unwrap()
+    .create_device
+    .ok_or(anyhow::Error::msg("create_device method not found"))?()
 }
 
 pub fn install_update_driver(reboot_required: &mut bool) -> ResultType<()> {
-    LIB_WRAPPER
-        .lock()
-        .unwrap()
-        .install_update_driver
-        .ok_or(anyhow::Error::msg("install_update_driver method not found"))?(reboot_required)
+  LIB_WRAPPER
+    .lock()
+    .unwrap()
+    .install_update_driver
+    .ok_or(anyhow::Error::msg("install_update_driver method not found"))?(
+    reboot_required,
+  )
 }
 
 pub fn uninstall_driver(reboot_required: &mut bool) -> ResultType<()> {
-    LIB_WRAPPER
-        .lock()
-        .unwrap()
-        .uninstall_driver
-        .ok_or(anyhow::Error::msg("uninstall_driver method not found"))?(reboot_required)
+  LIB_WRAPPER
+    .lock()
+    .unwrap()
+    .uninstall_driver
+    .ok_or(anyhow::Error::msg("uninstall_driver method not found"))?(
+    reboot_required,
+  )
 }
 
 #[cfg(windows)]
 pub fn plug_in_monitor(monitor_index: u32) -> ResultType<()> {
-    let mut lock = MONITOR_INDICES.lock().unwrap();
-    if lock.contains(&monitor_index) {
-        return Ok(());
-    }
-    let f = LIB_WRAPPER
-        .lock()
-        .unwrap()
-        .plug_in_monitor
-        .ok_or(anyhow::Error::msg("plug_in_monitor method not found"))?;
-    f(monitor_index, 0, 20)?;
-    lock.insert(monitor_index);
-    Ok(())
+  let mut lock = MONITOR_INDICES.lock().unwrap();
+  if lock.contains(&monitor_index) {
+    return Ok(());
+  }
+  let f = LIB_WRAPPER
+    .lock()
+    .unwrap()
+    .plug_in_monitor
+    .ok_or(anyhow::Error::msg("plug_in_monitor method not found"))?;
+  f(monitor_index, 0, 20)?;
+  lock.insert(monitor_index);
+  Ok(())
 }
 
 #[cfg(windows)]
 pub fn plug_out_monitor(monitor_index: u32) -> ResultType<()> {
-    let f = LIB_WRAPPER
-        .lock()
-        .unwrap()
-        .plug_out_monitor
-        .ok_or(anyhow::Error::msg("plug_out_monitor method not found"))?;
-    f(monitor_index)?;
-    MONITOR_INDICES.lock().unwrap().remove(&monitor_index);
-    Ok(())
+  let f = LIB_WRAPPER
+    .lock()
+    .unwrap()
+    .plug_out_monitor
+    .ok_or(anyhow::Error::msg("plug_out_monitor method not found"))?;
+  f(monitor_index)?;
+  MONITOR_INDICES.lock().unwrap().remove(&monitor_index);
+  Ok(())
 }
 
 #[cfg(windows)]
-pub fn update_monitor_modes(monitor_index: u32, modes: &[MonitorMode]) -> ResultType<()> {
-    let f = LIB_WRAPPER
-        .lock()
-        .unwrap()
-        .update_monitor_modes
-        .ok_or(anyhow::Error::msg("update_monitor_modes method not found"))?;
-    f(monitor_index, modes.len() as _, modes.as_ptr() as _)
+pub fn update_monitor_modes(
+  monitor_index: u32,
+  modes: &[MonitorMode],
+) -> ResultType<()> {
+  let f = LIB_WRAPPER
+    .lock()
+    .unwrap()
+    .update_monitor_modes
+    .ok_or(anyhow::Error::msg("update_monitor_modes method not found"))?;
+  f(monitor_index, modes.len() as _, modes.as_ptr() as _)
 }

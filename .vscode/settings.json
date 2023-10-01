@@ -5,6 +5,6 @@
   "rust-analyzer.cargo.target": "aarch64-apple-ios",
   "rust-analyzer.cargo.features": [
     "flutter",
-    "flutter_texture_render"
+    // "flutter_texture_render"
   ]
 }

@@ -172,9 +172,9 @@ pub const FALSE: ::std::os::raw::c_int = 0;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _MonitorMode {
-    pub width: DWORD,
-    pub height: DWORD,
-    pub sync: DWORD,
+  pub width: DWORD,
+  pub height: DWORD,
+  pub sync: DWORD,
 }
 pub type MonitorMode = _MonitorMode;
 pub type PMonitorMode = *mut MonitorMode;
@@ -182,34 +182,38 @@ pub type PMonitorMode = *mut MonitorMode;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct HSWDEVICE__ {
-    pub unused: ::std::os::raw::c_int,
+  pub unused: ::std::os::raw::c_int,
 }
 pub type HSWDEVICE = *mut HSWDEVICE__;
 pub type PHSWDEVICE = *mut HSWDEVICE;
 
 #[link(name = "Newdev")]
 extern "C" {
-    pub fn InstallUpdate(fullInfPath: LPCTSTR, rebootRequired: PBOOL) -> BOOL;
+  pub fn InstallUpdate(fullInfPath: LPCTSTR, rebootRequired: PBOOL) -> BOOL;
 }
 
 #[link(name = "Setupapi")]
 extern "C" {
-    pub fn IsDeviceCreated(created: PBOOL) -> BOOL;
+  pub fn IsDeviceCreated(created: PBOOL) -> BOOL;
 }
 
 #[link(name = "Swdevice")]
 #[link(name = "OneCoreUAP")]
 extern "C" {
-    pub fn DeviceCreate(hSwDevice: PHSWDEVICE) -> BOOL;
-    pub fn DeviceClose(hSwDevice: HSWDEVICE);
+  pub fn DeviceCreate(hSwDevice: PHSWDEVICE) -> BOOL;
+  pub fn DeviceClose(hSwDevice: HSWDEVICE);
 }
 
 extern "C" {
-    pub fn Uninstall(fullInfPath: LPCTSTR, rebootRequired: PBOOL) -> BOOL;
-    pub fn MonitorPlugIn(index: UINT, edid: UINT, retries: INT) -> BOOL;
-    pub fn MonitorPlugOut(index: UINT) -> BOOL;
-    pub fn MonitorModesUpdate(index: UINT, modeCount: UINT, modes: PMonitorMode) -> BOOL;
+  pub fn Uninstall(fullInfPath: LPCTSTR, rebootRequired: PBOOL) -> BOOL;
+  pub fn MonitorPlugIn(index: UINT, edid: UINT, retries: INT) -> BOOL;
+  pub fn MonitorPlugOut(index: UINT) -> BOOL;
+  pub fn MonitorModesUpdate(
+    index: UINT,
+    modeCount: UINT,
+    modes: PMonitorMode,
+  ) -> BOOL;
 
-    pub fn GetLastMsg() -> PCHAR;
-    pub fn SetPrintErrMsg(b: BOOL);
+  pub fn GetLastMsg() -> PCHAR;
+  pub fn SetPrintErrMsg(b: BOOL);
 }
