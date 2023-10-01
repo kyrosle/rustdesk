@@ -1,0 +1,10 @@
+{
+  "rust-analyzer.linkedProjects": [
+    "./libs/hbb_common/Cargo.toml"
+  ],
+  "rust-analyzer.cargo.target": "aarch64-apple-ios",
+  "rust-analyzer.cargo.features": [
+    "flutter",
+    "flutter_texture_render"
+  ]
+}
