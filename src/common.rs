@@ -579,6 +579,9 @@ async fn test_nat_type_() -> ResultType<bool> {
     let mut port1 = 0;
     let mut port2 = 0;
     let mut local_addr = None;
+    // i == 0: server1, set option "local-ip-addr" -> port1
+    // i == 1: server2                             -> port2
+    // judge Nat type Asymmetric or Symmetric?
     for i in 0..2 {
         let server = if i == 0 { &*server1 } else { &*server2 };
         let mut socket =

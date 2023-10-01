@@ -779,7 +779,7 @@ pub async fn get_rendezvous_server(ms_timeout: u64) -> (String, Vec<String>) {
 }
 
 async fn get_options_(ms_timeout: u64) -> ResultType<HashMap<String, String>> {
-    let mut c = connect(ms_timeout, "").await?;
+    let mut c: ConnectionTmpl<Conn> = connect(ms_timeout, "").await?;
     c.send(&Data::Options(None)).await?;
     if let Some(Data::Options(Some(value))) = c.next_timeout(ms_timeout).await? {
         Config::set_options(value.clone());
@@ -854,7 +854,7 @@ pub async fn get_rendezvous_servers(ms_timeout: u64) -> Vec<String> {
 
 #[inline]
 async fn get_socks_(ms_timeout: u64) -> ResultType<Option<config::Socks5Server>> {
-    let mut c = connect(ms_timeout, "").await?;
+    let mut c: ConnectionTmpl<Conn> = connect(ms_timeout, "").await?;
     c.send(&Data::Socks(None)).await?;
     if let Some(Data::Socks(value)) = c.next_timeout(ms_timeout).await? {
         Config::set_socks(value.clone());
