@@ -344,7 +344,8 @@ pub fn init_log(
   #[cfg(debug_assertions)]
   {
     use env_logger::*;
-    init_from_env(Env::default().filter_or(DEFAULT_FILTER_ENV, "info"));
+    let _ =
+      try_init_from_env(Env::default().filter_or(DEFAULT_FILTER_ENV, "info"));
     None
   }
   #[cfg(not(debug_assertions))]
