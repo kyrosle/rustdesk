@@ -6,5 +6,6 @@
   "rust-analyzer.cargo.features": [
     "flutter",
     // "flutter_texture_render"
-  ]
+  ],
+  "rust-analyzer.showUnlinkedFileNotification": false
 }
